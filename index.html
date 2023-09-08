@@ -127,19 +127,20 @@
       //    * If the player lands on blue, return the string "🟦 🥳"
       // 🧠 Edge cases:
       //    * If the x or y coordinates are under 1 or over 3, return the string "invalid coordinates"
+      let coord=[x,y]
       if(x<1||x>3||y<1||y>3){
         return "invalid coordinates"
       }else
-      if(x==="🟦"&&y==="🟦"){
+      if(grid[coord]==="🟦"){
         return "🟦 🥳"
       }else
-      if(x==="🟥"&&y==="🟥"){
+      if(grid[x]==="🟥"&&grid[y]==="🟥"){
         return "🟥 💀"
       }
     }
 
     // 👉 CHALLENGE 3
-    function booleanize() {
+    function booleanize(object) {
       // 🧠 booleanize takes an object as its single argument, which can have any number of properties
       // Loop over the properties and then return the object, after applying the following transformations:
       //    * If a value is the number zero, it must be transformed into the Boolean false
@@ -151,7 +152,7 @@
     }
 
     // 👉 CHALLENGE 4
-    function scrub() {
+    function scrub(string,array) {
       // 🧠 scrub takes a string "text" as its first argument, and an array of forbidden words "forbidden" as its second
       // Any word in the text included in the array of forbidden words is replaced with a word of equal length but made of lowcase "x"
       // The scrubbed text is then returned from the function, as seen in the examples below
@@ -166,7 +167,7 @@
     }
 
     // 👉 CHALLENGE 5
-    function normalizePhoneNumber() {
+    function normalizePhoneNumber(string) {
       // 🧠 normalizePhoneNumber takes a string as its only argument, representing a ten-digit number
       // The function returns a string formatted as seen below
       // 🧠 Examples of usage:
@@ -178,6 +179,9 @@
       // 🌟 HINT: instead of looping over the number's digits, loop backwards over a template "(XXX) XXX-XXXX"
       // 🌟 HINT: at each iteration, if the current character is an "X", replace it with the result of popping a digit from the number
       // 🌟 HINT: if you'd rather loop forwards, use `shift` instead of `pop`
+      if(string.length!==10){
+        return "type a 10-digit number"
+      }
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
@@ -188,6 +192,14 @@
       // 🌟 HINT: research using `Math.random` to obtain a number from 1 to 6
       // 🌟 HINT: use `while(true)` to throw the dice indefinitely, but avoid an infinite loop by making sure to break out eventually
       // 🌟 HINT: you need to keep track of the total number of throws, as well as how many sixes in a row
+      let sixes=0
+      let throws=0
+      while(sixes<3){
+        throws++
+        /*if(){
+          sixes++
+        }*/
+      }
     }
 
     // 🧪 TESTS, do not make any changes below this line ===================
