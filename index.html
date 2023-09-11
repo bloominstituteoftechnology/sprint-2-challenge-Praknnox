@@ -149,6 +149,21 @@
       // 🧠 Edge cases:
       //    * If a property name exceeds 9 characters, return the string "shorten all prop names to 9 chars or less"
       // 🌟 HINT: careful not to perform any unintended changes on the object
+      for(let index in object){
+        if(object.property<9){
+          return "shorten all prop names to 9 chars or less"
+        }else
+        if(object[index]===0){
+          object[index]= false
+        }else
+        if(object[index]===1){
+          object[index]=true
+        }else
+        if(object[index]===null){
+          delete object.property
+        }
+      }
+      return object
     }
 
     // 👉 CHALLENGE 4
@@ -164,6 +179,14 @@
       //    scrub("aces high", ["high", "aces", "hearts"]) // returns "xxxx xxxx"
       //    scrub("", ["high", "aces""]) // returns ""
       // 🌟 HINT: useful array methods to use are `push`, `indexOf`, `split`, `join`
+      let william=string.split(" ")
+      for(let index in array){
+        if(william===array[index]){
+          let shake=william.split("")
+          shake="x"
+        }
+      }
+      return william.join(" ")
     }
 
     // 👉 CHALLENGE 5
@@ -179,9 +202,19 @@
       // 🌟 HINT: instead of looping over the number's digits, loop backwards over a template "(XXX) XXX-XXXX"
       // 🌟 HINT: at each iteration, if the current character is an "X", replace it with the result of popping a digit from the number
       // 🌟 HINT: if you'd rather loop forwards, use `shift` instead of `pop`
+      let berry=string.split("")
+      let template="(xxx) xxx-xxxx"
+      for(let ind in string){
       if(string.length!==10){
         return "type a 10-digit number"
+      }else
+      if(typeof berry!=="integer"){
+        return "invalid phone number"
+      }else{
+        template.split("")
+        
       }
+    }
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
