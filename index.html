@@ -108,7 +108,7 @@
     }
 
     // 👉 CHALLENGE 2
-    function mineSweeper(grid,x,y) {
+    function mineSweeper(grid,y,x) {
       // 🧠 mineSweeper takes a grid as its first argument, and coordinates x and y as the second and third args
       //  The grid is an array of arrays in the following format: [["🟥","🟦","🟥"],["🟦","🟥","🟥"],["🟥","🟦","🟦"]]
       //  Each subarray is a row of the grid, the first subarray being the top row:
@@ -232,12 +232,19 @@
       // 🌟 HINT: you need to keep track of the total number of throws, as well as how many sixes in a row
       let sixes=0
       let throws=0
-      while(sixes<3){
+      while(true){
         throws++
-        /*if(){
-          sixes++
-        }*/
+        let roll=Math.floor(Math.random()*6)+1
+        if(roll===6){
+        sixes++
+        }else{
+        sixes=0
       }
+      if(sixes===3){
+      break
+      }
+      }
+      return throws
     }
 
     // 🧪 TESTS, do not make any changes below this line ===================
