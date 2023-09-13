@@ -127,15 +127,14 @@
       //    * If the player lands on blue, return the string "🟦 🥳"
       // 🧠 Edge cases:
       //    * If the x or y coordinates are under 1 or over 3, return the string "invalid coordinates"
-      let coord=[x,y]
       if(x<1||x>3||y<1||y>3){
         return "invalid coordinates"
       }else
-      if(grid[coord]==="🟦"){
-        return "🟦 🥳"
-      }else
-      if(grid[x]==="🟥"&&grid[y]==="🟥"){
+      if(grid[x-1][y-1]==="🟥"){
         return "🟥 💀"
+      }else
+      if(grid[x-1][y-1]==="🟦"){
+        return "🟦 🥳"
       }
     }
 
@@ -150,9 +149,6 @@
       //    * If a property name exceeds 9 characters, return the string "shorten all prop names to 9 chars or less"
       // 🌟 HINT: careful not to perform any unintended changes on the object
       for(let index in object){
-        if(object.property<9){
-          return "shorten all prop names to 9 chars or less"
-        }else
         if(object[index]===0){
           object[index]= false
         }else
@@ -160,9 +156,14 @@
           object[index]=true
         }else
         if(object[index]===null){
-          delete object.property
+          delete object[index]
         }
       }
+      for(let index in object){
+      if(index.length>9){
+        return "shorten all prop names to 9 chars or less"
+      }
+    }
       return object
     }
 
@@ -180,13 +181,16 @@
       //    scrub("", ["high", "aces""]) // returns ""
       // 🌟 HINT: useful array methods to use are `push`, `indexOf`, `split`, `join`
       let william=string.split(" ")
-      for(let index in array){
-        if(william===array[index]){
-          let shake=william.split("")
-          shake="x"
+      let result4=[]
+      for(let i=0;i<william.length;i++){
+        let shake=array.indexOf(william[i])
+        if(shake!==-1){
+          result4.push("x".repeat(william[i].length))
+        }else{
+          result4.push(william[i])
         }
       }
-      return william.join(" ")
+      return result4.join(" ")
     }
 
     // 👉 CHALLENGE 5
@@ -203,18 +207,19 @@
       // 🌟 HINT: at each iteration, if the current character is an "X", replace it with the result of popping a digit from the number
       // 🌟 HINT: if you'd rather loop forwards, use `shift` instead of `pop`
       let berry=string.split("")
-      let template="(xxx) xxx-xxxx"
-      for(let ind in string){
       if(string.length!==10){
         return "type a 10-digit number"
-      }else
-      if(typeof berry!=="integer"){
-        return "invalid phone number"
-      }else{
-        template.split("")
-        
       }
+      for(let ind in berry){
+        if(isNaN(parseInt(berry[ind]))){
+          return "invalid phone number"
+        }
+      }
+      let template="(xxx) xxx-xxxx"
+      for(let i=9;i>=0;i--){
+      template=template.replace("x",berry.shift())
     }
+    return template
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
